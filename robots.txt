@@ -1,5 +1,2 @@
 User-agent: *
 Allow: /
-
-# Quando o domínio estiver definido, publique um sitemap e informe aqui:
-# Sitemap: https://www.SEU-DOMINIO.com.br/sitemap.xml

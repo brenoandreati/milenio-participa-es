@@ -15,6 +15,7 @@ assets/fonts/           Archivo (variável, licença OFL), servida pelo próprio
 assets/img/             imagens otimizadas (geradas pelo script)
 assets/originais/       arquivos-fonte: logotipo e fotografias
 scripts/otimizar-imagens.py
+scripts/montar-site.py  monta dist/ para publicação
 PENDENCIAS.md           informações que a Milênio precisa confirmar
 ```
 
@@ -65,14 +66,21 @@ O mesmo script recorta o logotipo, gera as versões branca e grafite com fundo t
 
 Ao instalar uma ferramenta de medição, atualize a seção de cookies da política de privacidade.
 
+## Publicação (Cloudflare Pages)
+
+O site está publicado no projeto `milenio-participacoes` da Cloudflare Pages, em https://milenio-participacoes.pages.dev, por envio direto (sem ligação com o repositório). Para publicar uma nova versão:
+
+```bash
+python3 scripts/montar-site.py https://milenio-participacoes.pages.dev
+cd dist
+npx wrangler pages deploy . --project-name milenio-participacoes --branch main
+```
+
+`montar-site.py` gera `dist/` só com os arquivos públicos (sem `assets/originais/`, notas e scripts), remove os comentários `PENDENTE` do HTML e, a partir do endereço informado, preenche `canonical`, `og:url`, `og:image` absoluta, `url` e `logo` no JSON-LD, `sitemap.xml` e `robots.txt`. Também cria `_headers` com cabeçalhos de segurança e cache. Se um domínio próprio for ligado ao projeto, rode o script com o novo endereço e publique de novo.
+
 ## SEO
 
-O site já tem título e descrição, um único `h1`, Open Graph, dados estruturados (`GeneralContractor`) e textos alternativos nas imagens. Quando o domínio estiver definido:
-
-- descomente e ajuste `canonical` e `og:url` no `<head>` do `index.html`;
-- troque `og:image` por URL absoluta (`https://.../assets/img/compartilhamento.jpg`);
-- acrescente `url` e `logo` ao JSON-LD;
-- publique um `sitemap.xml` e informe-o no `robots.txt`.
+O site tem título e descrição, um único `h1`, Open Graph, dados estruturados (`GeneralContractor`), textos alternativos nas imagens e sitemap (gerado na publicação).
 
 ## Conteúdo pendente
 

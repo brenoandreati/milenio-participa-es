@@ -6,7 +6,7 @@ O site foi escrito apenas com as informações fornecidas. Os itens abaixo não 
 
 - [ ] **Número de WhatsApp comercial.** Enquanto não for informado, o atendimento segue pelo Direct do Instagram. Preencher em `assets/js/config.js`.
 - [ ] **E-mail comercial**, se houver.
-- [ ] **Domínio do site**, para canonical, Open Graph e sitemap (ver README).
+- [ ] **Domínio próprio**, se houver. Hoje o site está em https://milenio-participacoes.pages.dev. Ver README.
 
 ## Fotografias
 
